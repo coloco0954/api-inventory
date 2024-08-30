@@ -1,0 +1,192 @@
+Requerimientos de la API de Inventario
+
+    Lenguaje y Framework:
+        Lenguaje: Node.js (JavaScript)
+        Framework: Express.js
+
+    Base de Datos:
+        Puedes usar SQLite, PostgreSQL, MySQL, o MongoDB dependiendo de tu preferencia.
+        Esquema de la base de datos para almacenar productos, categorías, y proveedores.
+
+    Formato de Respuesta:
+        Todas las respuestas de la API se enviarán en formato JSON.
+
+    Endpoints:
+        Todos los endpoints deben seguir una estructura RESTful.
+
+Endpoints y Funcionalidades
+
+    Productos
+
+        GET /api/products:
+            Descripción: Obtener una lista de todos los productos en el inventario.
+            Parámetros opcionales:
+                category: Filtrar por categoría.
+                min_price: Filtrar por precio mínimo.
+                max_price: Filtrar por precio máximo.
+                in_stock: Filtrar por disponibilidad (true para productos en stock).
+            Respuesta: Lista de productos con detalles como ID, nombre, descripción, cantidad, precio, categoría, y proveedor.
+
+        GET /api/products/
+        :
+            Descripción: Obtener detalles de un producto específico por su ID.
+            Respuesta: Detalles completos del producto.
+
+            {
+                "id": 1,
+                "name": "Laptop",
+                "description": "Laptop de 14 pulgadas con 8GB de RAM y 256GB SSD",
+                "quantity": 10,
+                "price": 750.99,
+                "category_id": 2,
+                "category_name": "Electrónica",
+                "supplier_id": 3,
+                "supplier_name": "Tech Suppliers Inc."
+            }
+
+        POST /api/products:
+            Descripción: Agregar un nuevo producto al inventario.
+            Cuerpo de la solicitud:
+
+            json
+
+    {
+      "name": "string",
+      "description": "string",
+      "quantity": "number",
+      "price": "number",
+      "category_id": "number",
+      "supplier_id": "number"
+    }
+
+    Respuesta: Detalles del producto recién creado.
+
+PUT /api/products/
+:
+
+    Descripción: Actualizar los detalles de un producto existente.
+    Cuerpo de la solicitud:
+
+    json
+
+        {
+          "name": "string",
+          "description": "string",
+          "quantity": "number",
+          "price": "number",
+          "category_id": "number",
+          "supplier_id": "number"
+        }
+
+        Respuesta: Detalles del producto actualizado.
+
+    DELETE /api/products/
+    :
+        Descripción: Eliminar un producto del inventario por su ID.
+        Respuesta: Mensaje de confirmación de eliminación.
+
+Categorías
+
+    GET /api/categories:
+        Descripción: Obtener una lista de todas las categorías de productos.
+        Respuesta: Lista de categorías con detalles como ID y nombre.
+
+    GET /api/categories/
+    :
+        Descripción: Obtener detalles de una categoría específica.
+        Respuesta: Detalles de la categoría.
+
+    POST /api/categories:
+        Descripción: Agregar una nueva categoría al sistema.
+        Cuerpo de la solicitud:
+
+        json
+
+    {
+      "name": "string"
+    }
+
+    Respuesta: Detalles de la categoría recién creada.
+
+PUT /api/categories/
+:
+
+    Descripción: Actualizar los detalles de una categoría existente.
+    Cuerpo de la solicitud:
+
+    json
+
+        {
+          "name": "string"
+        }
+
+        Respuesta: Detalles de la categoría actualizada.
+
+    DELETE /api/categories/
+    :
+        Descripción: Eliminar una categoría del sistema por su ID.
+        Respuesta: Mensaje de confirmación de eliminación.
+
+Proveedores
+
+    GET /api/suppliers:
+        Descripción: Obtener una lista de todos los proveedores.
+        Respuesta: Lista de proveedores con detalles como ID, nombre, dirección, y contacto.
+
+    GET /api/suppliers/
+    :
+        Descripción: Obtener detalles de un proveedor específico.
+        Respuesta: Detalles del proveedor.
+
+    POST /api/suppliers:
+        Descripción: Agregar un nuevo proveedor.
+        Cuerpo de la solicitud:
+
+        json
+
+    {
+      "name": "string",
+      "address": "string",
+      "contact": "string"
+    }
+
+    Respuesta: Detalles del proveedor recién creado.
+
+PUT /api/suppliers/
+:
+
+    Descripción: Actualizar los detalles de un proveedor existente.
+    Cuerpo de la solicitud:
+
+    json
+
+            {
+              "name": "string",
+              "address": "string",
+              "contact": "string"
+            }
+
+            Respuesta: Detalles del proveedor actualizado.
+
+        DELETE /api/suppliers/
+        :
+            Descripción: Eliminar un proveedor del sistema por su ID.
+            Respuesta: Mensaje de confirmación de eliminación.
+
+Reglas de Validación
+
+    Los campos name, price, quantity, category_id, y supplier_id deben ser obligatorios al crear o actualizar un producto.
+    El price debe ser un número positivo, y quantity debe ser un entero no negativo.
+    Las relaciones entre productos, categorías, y proveedores deben ser consistentes, es decir, un producto solo puede estar asociado a una categoría o proveedor existente.
+
+Respuesta de Error
+
+    Para cada endpoint, la API debe manejar y responder con errores apropiados, como 404 Not Found para recursos inexistentes, 400 Bad Request para datos de entrada inválidos, y 500 Internal Server Error para errores del servidor.
+
+Seguridad y Pruebas
+
+    Rate Limiting: Para limitar el abuso de la API.
+    Pruebas Unitarias: Crear pruebas unitarias para cada endpoint usando herramientas como Jest o Mocha.
+    Documentación: Documentar la API usando Swagger o Postman para que otros desarrolladores puedan entender y usarla fácilmente.
+
+Este conjunto de requerimientos y funcionalidades debería proporcionarte una base sólida para comenzar a construir tu API de inventario. ¡Buena suerte!

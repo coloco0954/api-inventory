@@ -1,0 +1,30 @@
+### Obtener todos los productos
+GET http://localhost:3001/api/products/
+
+### Obtener producto por id
+GET http://localhost:3001/api/products/66cff11151335806e20c58ed
+
+### Crear producto
+POST http://localhost:3001/api/products/
+Content-Type: application/json
+
+{
+    "name": "Tablet",
+    "description": "Tablet de 9 pulgadas, resolucion full hd 1080p, 6gb ram, 128gm almacenamiento",
+    "quantity": 5,
+    "price": 550.30,
+    "category_id": "66d13935354529e3fd86c7e6",
+    "supplier_id": "66d1442872070e89687aca78"
+}
+
+### Editar producto
+PUT http://localhost:3001/api/products/66d1476113a2f2d99fa48526
+Content-Type: application/json
+
+{
+    "supplier_id": "66d1445372070e89687aca7a",
+    "category_id": "66d13943354529e3fd86c7ea"
+}
+
+### Eliminar producto
+DELETE  http://localhost:3001/api/products/66d1467ea1922adba295a2e6

@@ -1,0 +1,26 @@
+### Obtener todos los proveedores
+GET http://localhost:3001/api/suppliers
+
+### Obtener proveedor por id
+GET http://localhost:3001/api/suppliers/66d13f6cb510df00f47592c4
+
+### Crear proveedor
+POST http://localhost:3001/api/suppliers
+Content-Type: application/json
+
+{
+    "name": "Spotify",
+    "address": "303 Fitness Ave, Miami, FLL",
+    "contact": "hello@sportify.com"
+}
+
+### Actualizar proveedor
+PUT http://localhost:3001/api/suppliers/66d1403e1219915102befb32
+Content-Type: application/json
+
+{
+    "name": "Cinepolis"
+}
+
+### Eliminar proveedor
+DELETE http://localhost:3001/api/suppliers/66d140ad72070e89687aca72
