@@ -8,7 +8,8 @@ const productSchema = new Schema({
     category_id: String,
     category_name: String,
     supplier_id: String,
-    supplier_name: String
+    supplier_name: String,
+    in_stock: Boolean
 })
 
 productSchema.set('toJSON', {

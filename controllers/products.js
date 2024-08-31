@@ -5,7 +5,25 @@ const Supplier = require('../models/Supplier')
 class ProductController {
     static async getAll(req, res, next) {
         try {
-            const products = await Product.find({})
+            let products = await Product.find({})
+            const { category, min_price, max_price, in_stock } = req.query
+
+            if (category) {
+                products = products.filter(product => product.category_name.toLowerCase() === category.toLowerCase())
+            }
+
+            if (min_price) {
+                products = products.filter(product => product.price >= parseFloat(min_price))
+            }
+
+            if (max_price) {
+                products = products.filter(product => product.price <= parseFloat(max_price))
+            }
+
+            if (in_stock) {
+                const stockFilter = in_stock === 'true'
+                products = products.filter(product => product.in_stock === stockFilter)
+            }
 
             res.status(200).json(products)
         } catch (error) {
@@ -46,12 +64,13 @@ class ProductController {
             const newProduct = new Product({
                 name: product.name,
                 description: product.description,
-                quantity: product.quantity ? product.quantity : 1,
+                quantity: product.quantity,
                 price: product.price ? product.price : 10,
                 category_id: product.category_id,
                 category_name: category.name,
                 supplier_id: product.supplier_id,
-                supplier_name: supplier.name
+                supplier_name: supplier.name,
+                in_stock: product.quantity > 0 ? true : false
             })
 
             const saveNewProduct = await newProduct.save()

@@ -1,5 +1,5 @@
 ### Obtener todos los productos
-GET http://localhost:3001/api/products/
+GET http://localhost:3001/api/products
 
 ### Obtener producto por id
 GET http://localhost:3001/api/products/66cff11151335806e20c58ed
@@ -9,10 +9,10 @@ POST http://localhost:3001/api/products/
 Content-Type: application/json
 
 {
-    "name": "Tablet",
-    "description": "Tablet de 9 pulgadas, resolucion full hd 1080p, 6gb ram, 128gm almacenamiento",
-    "quantity": 5,
-    "price": 550.30,
+    "name": "Laptop",
+    "description": "Laptop marca HP con resolcion 1080p almacenamiento 500gb SSD 16 ram DDR4 procesador core I5 12th",
+    "quantity": 0,
+    "price": 500,
     "category_id": "66d13935354529e3fd86c7e6",
     "supplier_id": "66d1442872070e89687aca78"
 }
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ### Eliminar producto
-DELETE  http://localhost:3001/api/products/66d1467ea1922adba295a2e6
+DELETE  http://localhost:3001/api/products/66d372524c29ad48d4e010fc
