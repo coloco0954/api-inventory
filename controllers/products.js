@@ -61,6 +61,10 @@ class ProductController {
                 return res.status(404).json({ error: 'category or supplier not found' })
             }
 
+            if (product.price < 0 || product.quantity < 0) {
+                return res.status(400).json({ error: 'the price or quantity must be greater than 0' })
+            }
+
             const newProduct = new Product({
                 name: product.name,
                 description: product.description,
