@@ -53,10 +53,6 @@ class SupplierController {
             const id = req.params.id
             const newInfo = req.body
 
-            if (newInfo.id) {
-                return res.status(400).json({ error: 'you cannot edit the id' })
-            }
-
             const hasAtLeastOneField = newInfo.name || newInfo.address || newInfo.contact
 
             if (!hasAtLeastOneField) {

@@ -2,7 +2,7 @@
 GET http://localhost:3001/api/categories
 
 ### Obtener categoria por ID
-GET http://localhost:3001/api/categories/66d13935354529e3fd86c7e6
+GET http://localhost:3001/api/categories/66d1395d354529e3fd86c7f1
 
 ### Crear categoria
 POST http://localhost:3001/api/categories
@@ -13,11 +13,11 @@ Content-Type: application/json
 }
 
 ### Actualizar categoria
-PATCH  http://localhost:3001/api/categories/66d13a187ca0516d12633343
+PATCH  http://localhost:3001/api/categories/66d1395d354529e3fd86c7f1
 Content-Type: application/json
 
 {
-    "name": "Jardineria"
+    "name": "Libros"
 }
 
 ### Eliminar categoria

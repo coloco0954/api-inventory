@@ -1,4 +1,6 @@
 const Product = require('../models/Product')
+const Category = require('../models/Category')
+const Supplier = require('../models/Supplier')
 
 class ProductController {
     static async getAll(req, res, next) {
@@ -37,8 +39,6 @@ class ProductController {
             const category = await Category.findById(product.category_id)
             const supplier = await Supplier.findById(product.supplier_id)
 
-            console.log(category, supplier)
-
             if (!category || !supplier) {
                 return res.status(404).json({ error: 'category or supplier not found' })
             }
@@ -67,8 +67,8 @@ class ProductController {
             const id = req.params.id
             let newInfo = req.body
 
-            if (newInfo.id || newInfo.category_name || newInfo.supplier_name) {
-                return res.status(400).json({ message: 'You cannot edit the id, category name or provider name' })
+            if (newInfo.category_name || newInfo.supplier_name) {
+                return res.status(400).json({ message: 'You cannot edit the category name or provider name' })
             }
 
             const hasAtLeastOneField = newInfo.name || newInfo.description || newInfo.quantity || newInfo.price || newInfo.category_id || newInfo.supplier_id
